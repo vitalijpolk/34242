@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Для тебя ❤️</title>
+
+<!-- Красивые шрифты -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(135deg,#ffe7ef,#fff4f8);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh
+}
+
+.viewer{
+  width:100%;
+  max-width:420px;
+  height:720px;
+  background:#fff;
+  border-radius:30px;
+  overflow:hidden;
+  position:relative;
+  box-shadow:0 20px 50px rgba(0,0,0,.15)
+}
+
+.slide{
+  position:absolute;
+  inset:0;
+  padding:25px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  opacity:0;
+  transform:translateX(50px);
+  transition:.4s;
+  pointer-events:none
+}
+
+.slide.active{
+  opacity:1;
+  transform:translateX(0);
+  pointer-events:auto
+}
+
+img{
+  width:100%;
+  border-radius:20px;
+  margin-bottom:15px;
+  box-shadow:0 10px 25px rgba(0,0,0,.1)
+}
+
+h1{
+  font-family:'Great Vibes',cursive;
+  font-size:36px;
+  margin-bottom:15px;
+  color:#ff4d88
+}
+
+p{
+  font-size:16px;
+  line-height:1.6;
+  max-width:300px;
+}
+
+button{
+  margin-top:20px;
+  background:#ff6b9a;
+  color:#fff;
+  border:none;
+  padding:12px 20px;
+  border-radius:999px;
+  font-size:14px;
+  cursor:pointer;
+  transition:.2s;
+  box-shadow:0 8px 20px rgba(255,107,154,.3)
+}
+
+button:hover{
+  transform:translateY(-2px);
+}
+
+</style>
+</head>
+<body>
+
+<div class="viewer">
+
+<!-- СЛАЙД 1 -->
+<div class="slide active">
+<h1>Привет, моя любимая ❤️</h1>
+<p>Я сделал для тебя маленькую открытку…
+
+Просто чтобы ты улыбнулась и вспомнила, как сильно я тебя люблю 💖</p>
+<button onclick="start()">Открыть ✨</button>
+</div>
+
+<!-- ФОТО СЛАЙДЫ -->
+<div class="slide">
+<img src="images/1.jpg">
+<p>Я люблю тебя за то, что ты просто невероятно классная 💫</p>
+<button onclick="next()">Дальше</button>
+</div>
+
+<div class="slide">
+<img src="images/2.jpg">
+<p>Мне нравится с тобой ездить куда угодно… потому что главное не место, а ты рядом ❤️</p>
+<button onclick="next()">Дальше</button>
+</div>
+
+<div class="slide">
+<img src="images/3.jpg">
+<p>Ты моя секси лабубушка 😏 и я от тебя просто в восторге</p>
+<button onclick="next()">Дальше</button>
+</div>
+
+<div class="slide">
+<img src="images/4.jpg">
+<p>Ты умная, красивая… и моя самая любимая кошка 🐱</p>
+<button onclick="next()">Дальше</button>
+</div>
+
+<div class="slide">
+<img src="images/5.jpg">
+<p>Ты мой человек… и это для меня самое важное</p>
+<button onclick="next()">Дальше</button>
+</div>
+
+<div class="slide">
+<img src="images/6.jpg">
+<p>С тобой я реально готов хоть на край света 🌍</p>
+<button onclick="next()">Дальше</button>
+</div>
+
+<div class="slide">
+<img src="images/7.jpg">
+<p>С тобой мне всегда хорошо… просто потому что это ты 💖</p>
+<button onclick="next()">Дальше</button>
+</div>
+
+<div class="slide">
+<img src="images/8.jpg">
+<p>Ты немного крейзи 😄 но именно это я и люблю</p>
+<button onclick="next()">Дальше</button>
+</div>
+
+<div class="slide">
+<img src="images/9.jpg">
+<p>И что ты любишь питсу и что любая еда с тобой вкуснее</p>
+<button onclick="next()">Дальше</button>
+</div>
+
+<!-- ФИНАЛ -->
+<div class="slide">
+<h1>Я люблю тебя ❤️</h1>
+<p>Очень сильно. И очень по-настоящему 💖</p>
+</div>
+
+</div>
+
+<audio id="music" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+let slides=document.querySelectorAll('.slide')
+let current=0
+let music=document.getElementById('music')
+
+function show(){
+slides.forEach((s,i)=>s.classList.toggle('active',i===current))
+}
+
+function next(){
+if(current<slides.length-1){current++;show()}
+}
+
+function start(){
+music.play().catch(()=>{})
+current=1
+show()
+}
+</script>
+
+</body>
+</html>
